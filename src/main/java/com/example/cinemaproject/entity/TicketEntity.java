@@ -15,7 +15,7 @@ public class TicketEntity {
 
     @ManyToOne
     @JoinColumn(name = "showtime_id", nullable = false)
-    private ShowTimeEntity showtime;
+    private ShowtimeEntity showtime;
 
     @ManyToOne
     @JoinColumn(name = "seat_id", nullable = false)

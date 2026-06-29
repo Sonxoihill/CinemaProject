@@ -2,7 +2,7 @@ package com.example.cinemaproject.service;
 
 import com.example.cinemaproject.dto.SeatStatusDTO;
 import com.example.cinemaproject.entity.SeatEntity;
-import com.example.cinemaproject.entity.ShowTimeEntity;
+import com.example.cinemaproject.entity.ShowtimeEntity;
 import com.example.cinemaproject.entity.TicketEntity;
 import com.example.cinemaproject.repository.SeatRepository;
 import com.example.cinemaproject.repository.ShowtimeRepository;
@@ -25,7 +25,7 @@ public class ShowtimeService {
     TicketRepository ticketRepository;
 
     public List<SeatStatusDTO> getRoomLayoutWithStatus(Long showtimeId){
-        ShowTimeEntity showTime = showtimeRepository.findById(showtimeId)
+        ShowtimeEntity showTime = showtimeRepository.findById(showtimeId)
                 .orElseThrow(() -> new RuntimeException("Khong tim thay suat chieu hop le"));
 
         List<SeatEntity> allSeats  = seatRepository.findByRoomId(showTime.getRoom().getId());
