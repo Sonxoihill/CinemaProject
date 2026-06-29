@@ -14,5 +14,6 @@ import java.util.Optional;
 public interface TicketRepository extends JpaRepository<TicketEntity, Long> {
     List<TicketEntity> findByShowtimeId(Long showtimeId);
     Optional<TicketEntity> findByShowtimeIdAndSeatIdAndStatusIn(Long showtimeId, Long seatId, List<String> statuses);
-    List<TicketEntity> findByStatusAndCreateAtBefore(String status, LocalDateTime dateTime);
+    List<TicketEntity> findByStatusAndCreatedAtBefore(String status, LocalDateTime dateTime);
+    Optional<TicketEntity> findByIdAndStatus(Long id, String status);
 }

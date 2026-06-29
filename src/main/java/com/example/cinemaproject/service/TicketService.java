@@ -59,4 +59,14 @@ public class TicketService {
         return  ticketRepository.save(newTicket);
 
     }
+
+    @Transactional
+    public TicketEntity confirmPayment(Long ticketId){
+        TicketEntity ticket = ticketRepository.findByIdAndStatus(ticketId, "PENDING")
+                .orElseThrow(() -> new RuntimeException("Ve khong ton tai hoac da het han giu cho"));
+
+        ticket.setStatus("BOOKED");
+        ticketRepository.save(ticket);
+        return ticket;
+    }
 }

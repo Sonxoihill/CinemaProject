@@ -20,7 +20,7 @@ public class TicketCleanupScheduler {
     public void releaseExpiredTickets(){
         LocalDateTime fiveMinutesAgo = LocalDateTime.now().minusMinutes(5);
         List<TicketEntity> expiredTickets = ticketRepository
-                .findByStatusAndCreateAtBefore("PENDING", fiveMinutesAgo);
+                .findByStatusAndCreatedAtBefore("PENDING", fiveMinutesAgo);
 
         if(!expiredTickets.isEmpty()){
             System.out.println("Phat hien" +  expiredTickets.size() + "ve giu cho qua han 5 phut");

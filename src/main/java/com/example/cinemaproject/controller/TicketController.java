@@ -3,10 +3,7 @@ package com.example.cinemaproject.controller;
 import com.example.cinemaproject.entity.TicketEntity;
 import com.example.cinemaproject.service.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/tickets")
@@ -19,5 +16,11 @@ public class TicketController {
                                    @RequestParam Long seatId,
                                    @RequestParam Long userId){
         return ticketService.bookSeat(showtimeId, seatId,userId);
+    }
+
+    @PostMapping("{ticketId}/confirm")
+    public TicketEntity confirmPayment(@PathVariable Long ticketId){
+        TicketEntity ticket = ticketService.confirmPayment(ticketId);
+        return ticket;
     }
 }
